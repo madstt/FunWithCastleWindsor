@@ -2,7 +2,7 @@
 <hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
   <session-factory>
     <property name="connection.driver_class">NHibernate.Driver.OracleDataClientDriver</property>
-    <property name="connection.connection_string">User ID=eagle_int_devel;Password=eagle_int_devel#321;Data Source=HAVD</property>
+    <property name="connection.connection_string"></property>
 
     <property name="dialect">NHibernate.Dialect.Oracle10gDialect</property>
     <property name="show_sql">false</property>
