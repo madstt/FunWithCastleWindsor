@@ -71,9 +71,9 @@ namespace FunWithCastleWindsor
     public class NHibernateRepository<T> : IRepository<T>
     {
         INHibernateQueryable<T> queryable;
-        NHibernate.ISession session;
+        ISession session;
 
-        public NHibernateRepository(NHibernate.ISession session)
+        public NHibernateRepository(ISession session)
         {
             this.session = session;
         }
@@ -766,7 +766,7 @@ namespace FunWithCastleWindsor
             }
             catch (StaleObjectStateException)
             {
-                throw new EagleIntegrationException(string.Format("The operation was not completed, since the data was changed or deleted by another transaction."));
+                throw new IntegrationException(string.Format("The operation was not completed, since the data was changed or deleted by another transaction."));
             }
         }
 
@@ -782,7 +782,7 @@ namespace FunWithCastleWindsor
             }
             catch (StaleObjectStateException)
             {
-                throw new EagleIntegrationException(string.Format("The operation was not completed, since the data was changed or deleted by another transaction."));
+                throw new IntegrationException(string.Format("The operation was not completed, since the data was changed or deleted by another transaction."));
             }
 
         }
@@ -823,19 +823,19 @@ namespace FunWithCastleWindsor
 
     }
 
-    public class EagleIntegrationException : Exception
+    public class IntegrationException : Exception
     {
-        public EagleIntegrationException(string message)
+        public IntegrationException(string message)
             : base(message)
         {
         }
 
-        public EagleIntegrationException(string message, Exception innerException)
+        public IntegrationException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
-        public EagleIntegrationException()
+        public IntegrationException()
         {
         }
 
